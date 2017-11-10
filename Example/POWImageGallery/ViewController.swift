@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import POWImageGallery
 
-class ViewController: UIViewController {
+class ViewController: ImageGalleryViewController {
 
     override func viewDidLoad() {
+        self.delegate = ExampleDelegate()
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }

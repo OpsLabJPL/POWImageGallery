@@ -28,15 +28,10 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/drmarkpowell/POWImageGallery.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
-  s.source_files = 'POWImageGallery/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'POWImageGallery' => ['POWImageGallery/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.source_files = 'POWImageGallery/Classes/**/*.{swift,h,m}'
+  s.resources = ['POWImageGallery/Assets/**/*.{storyboard,xib}',
+                 'POWImageGallery/Assets/**/*.{png,PNG,jpg,JPG,xcassets}']
+  s.dependency 'SDWebImage', '~> 4.2'
 end
