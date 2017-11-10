@@ -1,0 +1,31 @@
+{
+  "name": "POWImageGallery",
+  "version": "0.1.0",
+  "summary": "A short description of POWImageGallery.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/drmarkpowell/POWImageGallery",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "drmarkpowell": "Mark.Powell@jpl.nasa.gov"
+  },
+  "source": {
+    "git": "https://github.com/drmarkpowell/POWImageGallery.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "POWImageGallery/Classes/**/*.{swift,h,m}",
+  "resources": [
+    "POWImageGallery/Assets/**/*.{storyboard,xib}",
+    "POWImageGallery/Assets/**/*.{png,PNG,jpg,JPG,xcassets}"
+  ],
+  "dependencies": {
+    "SDWebImage": [
+      "~> 4.2"
+    ]
+  }
+}
