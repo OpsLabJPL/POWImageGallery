@@ -33,14 +33,20 @@ open class ImageGalleryViewController : UIViewController {
                                                   options: nil)
         // Setup pages
         setupPageViewController()
-        pageViewController.setViewControllers([makeImageViewController(imageIndex:pageIndex, url:delegate.urls[pageIndex])],
-                           direction: .forward,
-                           animated: true,
-                           completion: nil)
+        reloadData() //load for the first time, really
     }
     
     public func numberOfImages() -> Int {
-        return delegate?.urls.count ?? 0
+        return delegate?.images.count ?? 0
+    }
+    
+    public func reloadData() {
+        if delegate.images.count > 0 {
+            pageViewController.setViewControllers([makeImageViewController(imageIndex:pageIndex, image:delegate.images[pageIndex])],
+                                                  direction: .forward,
+                                                  animated: true,
+                                                  completion: nil)
+        }
     }
     
     func setupPageViewController() {
@@ -58,10 +64,12 @@ open class ImageGalleryViewController : UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-    func makeImageViewController(imageIndex:Int, url: URL) -> ImageViewController {
+    func makeImageViewController(imageIndex:Int, image: ImageCreator) -> ImageViewController {
         let vc = ImageViewController()
         vc.imageIndex = imageIndex
-        vc.url = url
+        vc.image = image
+        image.delegate = vc
+        image.requestImage() //TODO look at this again and make sure it doesn't smell funny
         return vc
     }
 }
@@ -69,13 +77,11 @@ open class ImageGalleryViewController : UIViewController {
 extension ImageGalleryViewController : UIPageViewControllerDataSource {
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         if let imageVC = viewController as? ImageViewController {
-            if let url = imageVC.url {
-                if let index = delegate.urls.index(of: url) {
-                    if index > 0 {
-                        let url = delegate.urls[index-1]
-                        print("Image view \(index-1) is being made")
-                        return makeImageViewController(imageIndex:index-1, url: url)
-                    }
+            if let index = imageVC.imageIndex {
+                if index > 0 {
+                    let image = delegate.images[index-1]
+                    print("Image view \(index-1) is being made")
+                    return makeImageViewController(imageIndex:index-1, image: image)
                 }
             }
         }
@@ -84,13 +90,11 @@ extension ImageGalleryViewController : UIPageViewControllerDataSource {
     
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         if let imageVC = viewController as? ImageViewController {
-            if let url = imageVC.url {
-                if let index = delegate.urls.index(of: url) {
-                    if index < delegate.urls.count-1 {
-                        let url = delegate.urls[index+1]
-                        print("Image view \(index+1) is being made")
-                        return makeImageViewController(imageIndex:index+1, url: url)
-                    }
+            if let index = imageVC.imageIndex {
+                if index < delegate.images.count-1 {
+                    let image = delegate.images[index+1]
+                    print("Image view \(index+1) is being made")
+                    return makeImageViewController(imageIndex:index+1, image: image)
                 }
             }
         }
@@ -102,10 +106,8 @@ extension ImageGalleryViewController : UIPageViewControllerDelegate {
     
     public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if let imageVC = pageViewController.viewControllers?[0] as? ImageViewController {
-            if let url = imageVC.url {
-                if let index = delegate.urls.index(of: url) {
-                    self.pageIndex = index
-                }
+            if let index = imageVC.imageIndex {
+                self.pageIndex = index
             }
         }
     }

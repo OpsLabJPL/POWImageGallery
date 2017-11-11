@@ -13,23 +13,14 @@ open class ImageViewController : UIViewController {
     @objc public var imageView: UIImageView!
     @objc public var scrollView: UIScrollView!
     public var loadInProgress = false
-    public var url: URL? {
+    public var image: ImageCreator? {
         didSet {
-            if let url = url {
-                loadInProgress = true
-                SDWebImageManager.shared().loadImage(with: url, options: .refreshCached,
-                                                     progress:  { (receivedSize, expectedSize, targetUrl) -> Void in
-                },
-                                                     completed: { (image, data, error, cacheType, finished, imageURL) -> Void in
-                                                        if let image = image {
-                                                            self.initializeImageViewLayout(image:image)
-                                                        }
-                                                        self.loadInProgress = false
-                })
-            }
-        }
+            loadInProgress = true
+            self.image?.requestImage()
+         }
     }
-    public var imageIndex = -1
+    
+    public var imageIndex:Int?
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -90,5 +81,21 @@ open class ImageViewController : UIViewController {
 extension ImageViewController : UIScrollViewDelegate {
     public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return self.imageView
+    }
+}
+
+extension ImageViewController: ImageDelegate {
+    public func progress(receivedSize: Int, expectedSize:Int){
+        //TODO
+    }
+    
+    public func finished(image: UIImage) {
+        initializeImageViewLayout(image:image)
+        loadInProgress = false
+    }
+    
+    public func failure() {
+        //TODO
+        loadInProgress = false
     }
 }

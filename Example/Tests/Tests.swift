@@ -23,7 +23,7 @@ class POWImageGallerySpec: QuickSpec {
                 let bundle = Bundle(for: ImageGalleryViewController.self)
                 let url = bundle.url(forResource: "FLA_397506083EDR_F0010008AUT_04096M_", withExtension: "JPG")!
                 expect(imageVC.imageView.image).to(beNil())
-                imageVC.url = url
+                imageVC.image = ImageCreator(url: url, delegate: imageVC)
                 expect(imageVC.loadInProgress).to(beTrue())
                 expect(imageVC.imageView.image).toNotEventually(beNil())
             }
@@ -32,7 +32,7 @@ class POWImageGallerySpec: QuickSpec {
                 _ = imageVC.view //this will trigger viewDidLoad()
                 let url = URL(string: "http://msl-raws.s3.amazonaws.com/msl-raw-images/proj/msl/redops/ods/surface/sol/00000/opgs/edr/fcam/FLA_397506083EDR_F0010008AUT_04096M_.JPG")!
                 expect(imageVC.imageView.image).to(beNil())
-                imageVC.url = url
+                imageVC.image = ImageCreator(url: url, delegate: imageVC)
                 expect(imageVC.loadInProgress).to(beTrue())
                 expect(imageVC.imageView.image).toNotEventually(beNil())
             }

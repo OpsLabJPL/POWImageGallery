@@ -70,6 +70,7 @@
 		483FDA74FEC933E1A53FA25E794A0443 /* XCTestObservationCenter+CurrentTestCaseTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 601A809F2790AE35A4B6D5863EBC1D2B /* XCTestObservationCenter+CurrentTestCaseTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4868A61BA1AB7FE32493948CD391C178 /* Pods-POWImageGallery_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A98349963341F5A00D8D04F660BE62B /* Pods-POWImageGallery_Example-dummy.m */; };
 		4A5C1DBDF5562BE8E65D24C4B5A647DA /* POWImageGallery-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBE517576D00084B7AEB0E4CE94BF12 /* POWImageGallery-dummy.m */; };
+		4AC619F21FB6789700A92488 /* ImageCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC619F01FB6788400A92488 /* ImageCreator.swift */; };
 		4B33C07603749BE42334185AC55FE304 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 182400B252CB3A0FE4D92282AC843672 /* UIView+WebCacheOperation.m */; };
 		4CDACD8A5A6CFB688838AA988E7D1E43 /* Nimble-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7C3E93729273701F54FDB28A10DC93 /* Nimble-dummy.m */; };
 		4D68C35510D1E911C9B89840FC4B777F /* mach_excServer.c in Sources */ = {isa = PBXBuildFile; fileRef = E746BCCA8FB5DE386DB65BA8EEDC769A /* mach_excServer.c */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -376,6 +377,7 @@
 		4A2E8292B39BAFE57640A94D341081B9 /* Quick.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Quick.xcconfig; sourceTree = "<group>"; };
 		4A40768CD7F7F2E9BB8D7297F5918296 /* Nimble-Snapshots-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Nimble-Snapshots-dummy.m"; sourceTree = "<group>"; };
 		4A98349963341F5A00D8D04F660BE62B /* Pods-POWImageGallery_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-POWImageGallery_Example-dummy.m"; sourceTree = "<group>"; };
+		4AC619F01FB6788400A92488 /* ImageCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageCreator.swift; path = POWImageGallery/Classes/ImageCreator.swift; sourceTree = "<group>"; };
 		4DE52A8E70D572CC59CEC0D9C9D345D9 /* SDWebImage.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SDWebImage.modulemap; sourceTree = "<group>"; };
 		4E6283718EC03C86D9EE253DCE512AB7 /* UIImage+ForceDecode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ForceDecode.m"; path = "SDWebImage/UIImage+ForceDecode.m"; sourceTree = "<group>"; };
 		4EA9D598189CA74583AB370319AE7B07 /* MatcherFunc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatcherFunc.swift; path = Sources/Nimble/Matchers/MatcherFunc.swift; sourceTree = "<group>"; };
@@ -634,6 +636,7 @@
 		04E014734458CE6076DD125B7895C2C5 /* POWImageGallery */ = {
 			isa = PBXGroup;
 			children = (
+				4AC619F01FB6788400A92488 /* ImageCreator.swift */,
 				ACB26D7B1E676E8A988589DC3FFBE951 /* ImageGalleryViewController.swift */,
 				FA7B4609E2DFAFA15A96C543717588C6 /* ImageGalleryViewControllerDelegate.swift */,
 				24A582C0BCB873E126B45C04E704A740 /* ImageViewController.swift */,
@@ -1416,6 +1419,7 @@
 				B84324B8CF5FDFD89C841C3042790D0B /* ImageGalleryViewControllerDelegate.swift in Sources */,
 				185356B05CE078D240BFC08E3A2551FB /* ImageViewController.swift in Sources */,
 				4A5C1DBDF5562BE8E65D24C4B5A647DA /* POWImageGallery-dummy.m in Sources */,
+				4AC619F21FB6789700A92488 /* ImageCreator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
