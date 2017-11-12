@@ -8,8 +8,8 @@
 import Foundation
 import SDWebImage
 
-public protocol ImageDelegate {
-    func progress(receivedSize: Int, expectedSize:Int)
+@objc public protocol ImageDelegate {
+    @objc optional func progress(receivedSize: Int, expectedSize:Int)
     func finished(image: UIImage)
     func failure()
 }
@@ -18,7 +18,7 @@ open class ImageCreator {
 
     public let url:URL
     public var delegate:ImageDelegate?
-    public var loadInProgress = true
+    public var loadInProgress = false
     
     public init(url: URL, delegate:ImageDelegate?) {
         self.url = url
@@ -26,10 +26,13 @@ open class ImageCreator {
     }
     
     open func requestImage() {
-            loadInProgress = true
-            SDWebImageManager.shared().loadImage(with: url, options: .refreshCached,
+        if loadInProgress {
+            return
+        }
+        loadInProgress = true
+        SDWebImageManager.shared().loadImage(with: url, options: .refreshCached,
             progress:  { (receivedSize, expectedSize, targetUrl) -> Void in
-                self.delegate?.progress(receivedSize:receivedSize, expectedSize:expectedSize)
+                self.delegate?.progress?(receivedSize:receivedSize, expectedSize:expectedSize)
             },
             completed: { (image, data, error, cacheType, finished, imageURL) -> Void in
             if let image = image {
