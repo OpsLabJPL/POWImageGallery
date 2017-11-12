@@ -13,11 +13,6 @@ open class ImageGalleryViewController : UIViewController {
     public var delegate: ImageGalleryViewControllerDelegate!
     public private(set) var pageIndex = 0
     
-    public func setPageIndex(_ pageIndex:Int) {
-        self.pageIndex = pageIndex
-        reloadData()
-    }
-    
     public convenience init(delegate: ImageGalleryViewControllerDelegate) {
         self.init(nibName:nil, bundle:nil)
         self.delegate = delegate
@@ -41,11 +36,16 @@ open class ImageGalleryViewController : UIViewController {
         reloadData() //load for the first time, really
     }
     
-    public func numberOfImages() -> Int {
+    open func setPageIndex(_ pageIndex:Int) {
+        self.pageIndex = pageIndex
+        reloadData()
+    }
+    
+    open func numberOfImages() -> Int {
         return delegate?.images.count ?? 0
     }
     
-    public func reloadData() {
+    open func reloadData() {
         if delegate.images.count > 0 && pageIndex < delegate.images.count {
             pageViewController.setViewControllers([makeImageViewController(imageIndex:pageIndex, image:delegate.images[pageIndex])],
                                                   direction: .forward,
@@ -54,7 +54,7 @@ open class ImageGalleryViewController : UIViewController {
         }
     }
     
-    func setupPageViewController() {
+    open func setupPageViewController() {
         addChildViewController(pageViewController)
         pageViewController.dataSource = self
         pageViewController.delegate = self
@@ -69,18 +69,18 @@ open class ImageGalleryViewController : UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-    func makeImageViewController(imageIndex:Int, image: ImageCreator) -> ImageViewController {
+    open func makeImageViewController(imageIndex:Int, image: ImageCreator) -> ImageViewController {
         let vc = ImageViewController()
         vc.imageIndex = imageIndex
         vc.image = image
         image.delegate = vc
-        image.requestImage() //TODO look at this again and make sure it doesn't smell funny
+        image.requestImage()
         return vc
     }
 }
 
 extension ImageGalleryViewController : UIPageViewControllerDataSource {
-    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    open func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         if let imageVC = viewController as? ImageViewController {
             if let index = imageVC.imageIndex {
                 if index > 0 {
@@ -93,7 +93,7 @@ extension ImageGalleryViewController : UIPageViewControllerDataSource {
         return nil
     }
     
-    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    open func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         if let imageVC = viewController as? ImageViewController {
             if let index = imageVC.imageIndex {
                 if index < delegate.images.count-1 {
@@ -108,8 +108,7 @@ extension ImageGalleryViewController : UIPageViewControllerDataSource {
 }
 
 extension ImageGalleryViewController : UIPageViewControllerDelegate {
-    
-    public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    open func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if let imageVC = pageViewController.viewControllers?[0] as? ImageViewController {
             if let index = imageVC.imageIndex {
                 self.pageIndex = index
