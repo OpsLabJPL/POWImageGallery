@@ -61,8 +61,8 @@ open class ImageViewController : UIViewController {
         imageViewLeftConstraint = imageView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 0)
         imageViewRightConstraint = imageView.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: 0)
         let constraints = [
-            scrollView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 0),
-            scrollView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: 0),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
             scrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
             scrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
             imageViewTopConstraint, imageViewLeftConstraint, imageViewRightConstraint, imageViewBottomConstraint
