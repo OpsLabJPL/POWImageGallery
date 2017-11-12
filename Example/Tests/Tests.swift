@@ -53,6 +53,23 @@ class POWImageGallerySpec: QuickSpec {
                 expect(galleryVC.numberOfImages()).to(equal(3))
             }
         }
+        describe("ImageGalleryViewController set pageIndex creates the corresponding ImageViewController") {
+            let testDelegate = TestDelegate()
+            let galleryVC = ImageGalleryViewController()
+            galleryVC.delegate = testDelegate
+
+            it ("should start at page 0 after creation") {
+                expect(galleryVC.pageIndex).to(equal(0))
+                _ = galleryVC.view //this will trigger viewDidLoad()
+               let imageVC = galleryVC.pageViewController.viewControllers?[0] as? ImageViewController
+                expect(imageVC?.image?.url.absoluteString).to(equal(TestDelegate.imageUrl0))
+            }
+            it ("should create an ImageViewController for page 2 when pageIndex is set to 2.") {
+                galleryVC.setPageIndex(2)
+                let imageVC = galleryVC.pageViewController.viewControllers?[0] as? ImageViewController
+                expect(imageVC?.image?.url.absoluteString).to(equal(TestDelegate.imageUrl2))
+            }
+        }
     }
 }
 

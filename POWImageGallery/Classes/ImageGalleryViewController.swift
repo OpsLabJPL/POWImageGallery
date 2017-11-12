@@ -11,7 +11,12 @@ open class ImageGalleryViewController : UIViewController {
     
     @objc public var pageViewController: UIPageViewController!
     public var delegate: ImageGalleryViewControllerDelegate!
-    public var pageIndex = 0
+    public private(set) var pageIndex = 0
+    
+    public func setPageIndex(_ pageIndex:Int) {
+        self.pageIndex = pageIndex
+        reloadData()
+    }
     
     public convenience init(delegate: ImageGalleryViewControllerDelegate) {
         self.init(nibName:nil, bundle:nil)
@@ -41,7 +46,7 @@ open class ImageGalleryViewController : UIViewController {
     }
     
     public func reloadData() {
-        if delegate.images.count > 0 {
+        if delegate.images.count > 0 && pageIndex < delegate.images.count {
             pageViewController.setViewControllers([makeImageViewController(imageIndex:pageIndex, image:delegate.images[pageIndex])],
                                                   direction: .forward,
                                                   animated: true,
