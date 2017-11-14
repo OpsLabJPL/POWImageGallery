@@ -9,24 +9,18 @@
 Pod::Spec.new do |s|
   s.name             = 'POWImageGallery'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of POWImageGallery.'
+  s.summary          = 'Image gallery view controller for iOS apps.'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+Image gallery view controller for iOS apps. Written in Swift 4 for XCode 9.
                        DESC
 
-  s.homepage         = 'https://github.com/drmarkpowell/POWImageGallery'
+  s.homepage         = 'https://github.com/OpsLabJPL/POWImageGallery'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.license          = { :type => 'Apache 2.0', :file => 'LICENSE' }
   s.author           = { 'drmarkpowell' => 'Mark.Powell@jpl.nasa.gov' }
-  s.source           = { :git => 'https://github.com/drmarkpowell/POWImageGallery.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/OpsLabJPL/POWImageGallery.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '9.0'
 
