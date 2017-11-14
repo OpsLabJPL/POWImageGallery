@@ -75,6 +75,11 @@ open class ImageViewController : UIViewController {
         updateMinZoomScaleForSize(view.bounds.size)
     }
     
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    
     open override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         updateMinZoomScaleForSize(view.bounds.size)
@@ -93,14 +98,15 @@ open class ImageViewController : UIViewController {
     }
     
     fileprivate func updateConstraintsForSize(_ size: CGSize) {
-        
-        let yOffset = max(0, (size.height - imageView.frame.height) / 2)
-        imageViewTopConstraint.constant = yOffset
-        imageViewBottomConstraint.constant = yOffset
-        
-        let xOffset = max(0, (size.width - imageView.frame.width) / 2)
-        imageViewLeftConstraint.constant = xOffset
-        imageViewRightConstraint.constant = xOffset
+        if let image = imageView.image {
+            let yOffset = max(0, (size.height - image.size.height*scrollView.minimumZoomScale) / 2)
+            imageViewTopConstraint.constant = yOffset
+            imageViewBottomConstraint.constant = yOffset
+            
+            let xOffset = max(0, (size.width - image.size.width*scrollView.minimumZoomScale) / 2)
+            imageViewLeftConstraint.constant = xOffset
+            imageViewRightConstraint.constant = xOffset
+        }
         
         view.layoutIfNeeded()
     }
