@@ -198,7 +198,7 @@ extension ImageGalleryViewController : UIPageViewControllerDelegate {
 }
 
 extension ImageGalleryViewController : ImageViewControllerDelegate {
-    public func imageLoaded() {
+    open func imageLoaded() {
         //do nothing by default
     }
 }
