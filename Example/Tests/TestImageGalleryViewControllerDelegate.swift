@@ -9,7 +9,7 @@
 import Foundation
 import POWImageGallery
 
-public class TestDelegate : ImageGalleryViewControllerDelegate {
+public class TestImageGalleryViewControllerDelegate : ImageGalleryViewControllerDelegate {
     
     public static let imageUrl0 = "https://msl-raws.s3.amazonaws.com/msl-raw-images/proj/msl/redops/ods/surface/sol/00000/opgs/edr/fcam/FLA_397506083EDR_F0010008AUT_04096M_.JPG"
     public static let imageUrl1 = "https://msl-raws.s3.amazonaws.com/msl-raw-images/proj/msl/redops/ods/surface/sol/01500/opgs/edr/fcam/FLB_530660118EDR_F0582394FHAZ00318M_.JPG"

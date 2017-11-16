@@ -10,7 +10,7 @@ PODS:
   - Nimble-Snapshots/Core (6.3.0):
     - FBSnapshotTestCase (~> 2.0)
     - Nimble (~> 7.0)
-  - POWImageGallery (0.1.0):
+  - POWImageGallery (0.1.1):
     - SDWebImage (~> 4.2)
   - Quick (1.2.0)
   - SDWebImage (4.2.1):
@@ -33,7 +33,7 @@ SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
   Nimble-Snapshots: f5459b5b091678dc942d03ec4741cacb58ba4a52
-  POWImageGallery: e53e985c066abbf2ff378eee360d0441fae00ed8
+  POWImageGallery: 6ef2b91733f7b65380b73616daa04292f5366af3
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   SDWebImage: 1fa4c9edf525b744f002db89f3f5a38b3cd4c541
 

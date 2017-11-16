@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A1716DE1FB16964004C06ED /* TestDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1716DC1FB168FB004C06ED /* TestDelegate.swift */; };
+		4A0ABB401FBE4F9400905679 /* TestImageViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0ABB3E1FBE4CF000905679 /* TestImageViewControllerDelegate.swift */; };
+		4A1716DE1FB16964004C06ED /* TestImageGalleryViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1716DC1FB168FB004C06ED /* TestImageGalleryViewControllerDelegate.swift */; };
 		4A1716E01FB16979004C06ED /* ExampleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1716DF1FB16979004C06ED /* ExampleDelegate.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -33,7 +34,8 @@
 		0364A8C5B5B95D0305ACA938 /* Pods-POWImageGallery_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POWImageGallery_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-POWImageGallery_Tests/Pods-POWImageGallery_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		0782960D785B4BBF0C531A2F /* Pods-POWImageGallery_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POWImageGallery_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-POWImageGallery_Example/Pods-POWImageGallery_Example.release.xcconfig"; sourceTree = "<group>"; };
 		33D24D7C0C6E7F6FF2F9C8BF /* Pods-POWImageGallery_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POWImageGallery_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-POWImageGallery_Example/Pods-POWImageGallery_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		4A1716DC1FB168FB004C06ED /* TestDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDelegate.swift; sourceTree = "<group>"; };
+		4A0ABB3E1FBE4CF000905679 /* TestImageViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestImageViewControllerDelegate.swift; sourceTree = "<group>"; };
+		4A1716DC1FB168FB004C06ED /* TestImageGalleryViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestImageGalleryViewControllerDelegate.swift; sourceTree = "<group>"; };
 		4A1716DF1FB16979004C06ED /* ExampleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleDelegate.swift; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* POWImageGallery_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = POWImageGallery_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -132,7 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
-				4A1716DC1FB168FB004C06ED /* TestDelegate.swift */,
+				4A1716DC1FB168FB004C06ED /* TestImageGalleryViewControllerDelegate.swift */,
+				4A0ABB3E1FBE4CF000905679 /* TestImageViewControllerDelegate.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -403,7 +406,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A1716DE1FB16964004C06ED /* TestDelegate.swift in Sources */,
+				4A0ABB401FBE4F9400905679 /* TestImageViewControllerDelegate.swift in Sources */,
+				4A1716DE1FB16964004C06ED /* TestImageGalleryViewControllerDelegate.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
