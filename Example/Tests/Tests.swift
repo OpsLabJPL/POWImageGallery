@@ -36,16 +36,25 @@ class POWImageGallerySpec: QuickSpec {
                 expect(imageVC.loadInProgress).to(beTrue())
                 expect(imageVC.imageView.image).toNotEventually(beNil())
             }
+            it("should inform the delegate that a load is done.") {
+                let imageVC = ImageViewController()
+                let delegate = TestImageViewControllerDelegate()
+                imageVC.delegate = delegate
+                _ = imageVC.view //this will trigger viewDidLoad()
+                let url = URL(string: "http://msl-raws.s3.amazonaws.com/msl-raw-images/proj/msl/redops/ods/surface/sol/00000/opgs/edr/fcam/FLA_397506083EDR_F0010008AUT_04096M_.JPG")!
+                imageVC.image = ImageCreator(url: url, delegate: imageVC)
+                expect(delegate.loaded).toEventually(beTrue())
+            }
         }
         describe("ImageGalleryViewController creation") {
             it ("should have a PageViewController") {
-                let galleryVC = ImageGalleryViewController(delegate: TestDelegate())
+                let galleryVC = ImageGalleryViewController(delegate: TestImageGalleryViewControllerDelegate())
                 _ = galleryVC.view //this will trigger viewDidLoad()
                 expect(galleryVC.pageViewController).notTo(beNil())
             }
         }
         describe("ImageGalleryViewController creation with delegate") {
-            let testDelegate = TestDelegate()
+            let testDelegate = TestImageGalleryViewControllerDelegate()
             let galleryVC = ImageGalleryViewController()
             galleryVC.delegate = testDelegate
 
@@ -54,7 +63,7 @@ class POWImageGallerySpec: QuickSpec {
             }
         }
         describe("ImageGalleryViewController set pageIndex creates the corresponding ImageViewController") {
-            let testDelegate = TestDelegate()
+            let testDelegate = TestImageGalleryViewControllerDelegate()
             let galleryVC = ImageGalleryViewController()
             galleryVC.delegate = testDelegate
 
@@ -62,12 +71,12 @@ class POWImageGallerySpec: QuickSpec {
                 expect(galleryVC.pageIndex).to(equal(0))
                 _ = galleryVC.view //this will trigger viewDidLoad()
                let imageVC = galleryVC.pageViewController.viewControllers?[0] as? ImageViewController
-                expect(imageVC?.image?.url.absoluteString).to(equal(TestDelegate.imageUrl0))
+                expect(imageVC?.image?.url.absoluteString).to(equal(TestImageGalleryViewControllerDelegate.imageUrl0))
             }
             it ("should create an ImageViewController for page 2 when pageIndex is set to 2.") {
                 galleryVC.setPageIndex(2)
                 let imageVC = galleryVC.pageViewController.viewControllers?[0] as? ImageViewController
-                expect(imageVC?.image?.url.absoluteString).to(equal(TestDelegate.imageUrl2))
+                expect(imageVC?.image?.url.absoluteString).to(equal(TestImageGalleryViewControllerDelegate.imageUrl2))
             }
         }
     }
