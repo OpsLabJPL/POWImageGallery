@@ -28,4 +28,5 @@ Image gallery view controller for iOS apps. Written in Swift 4 for XCode 9.
   s.resources = ['POWImageGallery/Assets/**/*.{storyboard,xib}',
                  'POWImageGallery/Assets/**/*.{png,PNG,jpg,JPG,xcassets}']
   s.dependency 'SDWebImage', '~> 4.2'
+  s.dependency 'MBProgressHUD', '~> 1.1'
 end

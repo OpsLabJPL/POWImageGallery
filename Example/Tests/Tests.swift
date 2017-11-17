@@ -45,6 +45,14 @@ class POWImageGallerySpec: QuickSpec {
                 imageVC.image = ImageCreator(url: url, delegate: imageVC)
                 expect(delegate.loaded).toEventually(beTrue())
             }
+            it("should display a progress HUD when loading starts and hide it when finished.") {
+                let imageVC = ImageViewController()
+                _ = imageVC.view //this will trigger viewDidLoad()
+                let url = URL(string: "http://msl-raws.s3.amazonaws.com/msl-raw-images/proj/msl/redops/ods/surface/sol/00000/opgs/edr/fcam/FLA_397506083EDR_F0010008AUT_04096M_.JPG")!
+                imageVC.image = ImageCreator(url: url, delegate: imageVC)
+                expect(imageVC.progressHUD.alpha).toEventually(equal(1))
+                expect(imageVC.progressHUD.alpha).toEventually(equal(0))
+            }
         }
         describe("ImageGalleryViewController creation") {
             it ("should have a PageViewController") {
