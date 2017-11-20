@@ -78,13 +78,23 @@ class POWImageGallerySpec: QuickSpec {
             it ("should start at page 0 after creation") {
                 expect(galleryVC.pageIndex).to(equal(0))
                 _ = galleryVC.view //this will trigger viewDidLoad()
-               let imageVC = galleryVC.pageViewController.viewControllers?[0] as? ImageViewController
+                let imageVC = galleryVC.pageViewController.viewControllers?[0] as? ImageViewController
                 expect(imageVC?.image?.url.absoluteString).to(equal(TestImageGalleryViewControllerDelegate.imageUrl0))
             }
             it ("should create an ImageViewController for page 2 when pageIndex is set to 2.") {
                 galleryVC.setPageIndex(2)
                 let imageVC = galleryVC.pageViewController.viewControllers?[0] as? ImageViewController
                 expect(imageVC?.image?.url.absoluteString).to(equal(TestImageGalleryViewControllerDelegate.imageUrl2))
+            }
+        }
+        describe("captions") {
+            let testDelegate = TestImageGalleryViewControllerDelegate()
+            let galleryVC = ImageGalleryViewController()
+            galleryVC.delegate = testDelegate
+            it ("should have lincoln as first caption, loaded into the view") {
+                _ = galleryVC.view
+                expect(galleryVC.delegate.captions[0]).to(equal(TestImageGalleryViewControllerDelegate.lincoln))
+                expect(galleryVC.captionView.text).to(equal(TestImageGalleryViewControllerDelegate.lincoln))
             }
         }
     }
