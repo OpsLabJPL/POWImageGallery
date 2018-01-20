@@ -129,13 +129,6 @@ open class ImageViewController : UIViewController {
     
     fileprivate func updateConstraints() {
         if let image = imageView.image {
-//            let yOffset = max(0, (size.height - image.size.height*scrollView.minimumZoomScale) / 2)
-//            imageViewTopConstraint.constant = yOffset
-//            imageViewBottomConstraint.constant = yOffset
-//
-//            let xOffset = max(0, (size.width - image.size.width*scrollView.minimumZoomScale) / 2)
-//            imageViewLeftConstraint.constant = xOffset
-//            imageViewRightConstraint.constant = xOffset
             let imageWidth = image.size.width
             let imageHeight = image.size.height
             
