@@ -117,7 +117,7 @@ open class ImageViewController : UIViewController {
             
             if minZoom > 1 { minZoom = 1 }
             
-            scrollView.minimumZoomScale = 0.3 * minZoom
+            scrollView.minimumZoomScale = minZoom
             
             // Force scrollViewDidZoom fire if zoom did not change
             if minZoom == lastZoomScale { minZoom += 0.000001 }
